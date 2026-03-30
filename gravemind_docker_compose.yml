@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+
+    gravemind_1:
+        container_name: "gravemind_1"
+        image: santosderek/gravemind
+        # ports:
+        #     - "10.0.0.5:80:80/tcp"
+        #     - "10.0.0.5:2222:222/tcp"
+        #     - "10.0.0.5:5353:53/udp"
+        restart: unless-stopped
+        networks:
+            gravemind:
+                ipv4_address: 10.0.0.5
+    
+    gravemind_2:
+        container_name: "gravemind_2"
+        image: santosderek/gravemind
+        # ports:
+        #     - "10.0.0.6:80:80/tcp"
+        #     - "10.0.0.6:2222:222/tcp"
+        #     - "10.0.0.6:5353:53/udp"
+        restart: unless-stopped
+        networks:
+            gravemind:
+                ipv4_address: 10.0.0.6
+
+networks:
+    gravemind:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 10.0.0.0/24
+                  gateway: 10.0.0.1

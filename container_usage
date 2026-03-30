@@ -1,0 +1,8 @@
+## Start containers
+docker-compose -f gravemind_docker_compose.yml up -d
+
+## Stop containers
+docker-compose -f gravemind_docker_compose.yml stop
+
+## Stop and remove networks and comtainers 
+docker-compose -f gravemind_docker_compose.yml down
